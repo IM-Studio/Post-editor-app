@@ -1,0 +1,246 @@
+body{
+  background: linear-gradient(311deg, #c47d12, #beadbd, #9fd7af);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  font-family: monospace;
+}
+
+#app{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+#loading{
+  position: fixed;
+  top: calc(50vh - 25px);
+  left: calc(50vw - 25px);
+  width: 50px;
+  height: 50px;
+  animation: spinForever 2s infinite;
+  color: green;
+  font-size: 50px;
+  z-index: 100;
+}
+
+#noData{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left: 0px;
+  top: 48vh;
+  font-size: 9vmin;
+  white-space: nowrap;
+  color: #2a2727;
+  letter-spacing: 2px;
+  font-family: monospace;
+}
+
+#searchbar{
+  position: fixed;
+  margin-bottom: 10px;
+  z-index: 1;
+  width: 95%;
+}
+
+button#getPosts {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 80px;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-size: 1.2em;
+    background: #40ac6b;
+    color: white;
+    cursor: pointer;
+    transition: 0.25s;
+    padding: 0px 15px;
+    letter-spacing: 2px;
+    outline: none;
+}
+
+button#getPosts:hover{
+  filter: brightness(1.2);
+}
+
+#requestURL{
+  height: 30px;
+  padding: 5px 10px;
+  line-height: 20px;
+  font-size: 20px;
+  border-radius: 30px;
+  outline: none;
+  width: calc(100% - 80px);
+  border: 1px solid grey;
+  transition: 0.3s;
+  box-shadow: none;
+}
+
+#controls{
+  position: fixed;
+  top: 60px;
+  user-select: none;
+  font-size: 16px;
+  background: lightgrey;
+  border-radius: 50px;
+  padding: 0px 10px;
+  font-family: monospace;
+  z-index: 1;
+}
+
+#requestURL:focus{
+  box-shadow: 0px 0px 5px #a3ff00;
+}
+
+#postLimit, #pageNumber{
+  height: 17px;
+  width: 40px;
+  text-align: center;
+  padding: 5px 0px 5px 5px;
+  margin: 7px;
+  border-radius: 5px;
+  font-size: 1.1em;
+}
+
+#postLimit{
+  margin-right: 1vw;
+}
+
+.next-page, .prev-page{
+  cursor: pointer;
+  transition: 0.3s;
+  color: black;
+  margin: 5px;
+}
+
+.next-page:hover, .prev-page:hover{
+  color: green;
+}
+
+#posts-container{
+  margin-top: 100px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+}
+
+
+.post{
+  padding: 20px;
+  box-shadow: 0px 0px 5px grey;
+  text-shadow: 1px 1px 2px white;
+  margin: 15px 1%;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #ffda55;
+  transition: 0.3s;
+  cursor: pointer;
+  filter: brightness(0.9);
+  font-size: 18px;
+  max-width: 100%;
+}
+
+.post:hover{
+  filter: brightness(1.1);
+}
+
+.edit-icon{
+  transition: 0.3s;
+  opacity: 0;
+}
+.post:hover .edit-icon{
+  opacity: 1;
+}
+
+.post button{
+  background: transparent;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+  font-size: 26px;
+  line-height: 40px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transform: scale(1);
+  transition: 0.3s;
+
+}
+
+.post button:hover{
+  transform: scale(1.2);
+}
+
+.post-title{
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 15px;
+  max-width: 90%;
+}
+
+.post-body.mob-hidden{
+  transition: 0.3s;
+    height: 0px;
+    overflow: hidden;
+}
+
+.post input, .post textarea{
+  width: 90%;
+padding: 5px;
+border-radius: 5px;
+outline: none;
+min-height: 30px;
+font-size: inherit;
+font-family: inherit;
+}
+
+.post textarea{
+  width: 100%;
+}
+
+@media screen and (min-width: 600px){
+
+  #searchbar{
+    width: 45vw;
+    min-width: 550px;
+  }
+
+#postLimit, #pageNumber{
+  width: 55px;
+}
+
+.post{
+    max-width: 45%;
+    min-height: 200px;
+  }
+
+  .post-body.mob-hidden{
+      height: auto;
+  }
+}
+
+
+@media screen and (min-width: 1100px){
+  .post{
+    max-width: 31%;
+  }
+}
+
+@keyframes spinForever {
+  0%{
+    transform: rotateZ(0deg);
+  }
+  100%{
+    transform: rotateZ(360deg);
+  }
+}
